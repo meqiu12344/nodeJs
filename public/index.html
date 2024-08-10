@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Strona 1</title>
+</head>
+<body>
+    <h1>Strona 1</h1>
+    <button id="refreshBtn">Odśwież stronę 2</button>
+
+    <script>
+        document.getElementById('refreshBtn').addEventListener('click', function() {
+            fetch('/refresh')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        console.log('Strona 2 została odświeżona.');
+                    }
+                });
+        });
+    </script>
+</body>
+</html>

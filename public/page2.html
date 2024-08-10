@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Strona 2</title>
+</head>
+<body>
+    <h1>Strona 2</h1>
+    <p id="time"></p>
+
+    <script>
+        function updateTime() {
+            document.getElementById('time').innerText = 'Ostatnie odświeżenie: ' + new Date().toLocaleTimeString();
+        }
+
+        // Aktualizacja czasu przy załadowaniu strony
+        updateTime();
+
+        // WebSocket do odbierania powiadomień o odświeżeniu
+        const socket = new WebSocket('ws://localhost:8080');
+
+        socket.addEventListener('message', function (event) {
+            if (event.data === 'refresh') {
+                location.reload();
+            }
+        });
+    </script>
+</body>
+</html>
