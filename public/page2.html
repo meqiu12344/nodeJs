@@ -17,7 +17,7 @@
         updateTime();
 
         // WebSocket do odbierania powiadomień o odświeżeniu
-        const socket = new WebSocket('ws://localhost:8080');
+        const socket = new WebSocket('ws://nodejs-7nzb.onrender.com:8080');
 
         socket.addEventListener('message', function (event) {
             if (event.data === 'refresh') {
